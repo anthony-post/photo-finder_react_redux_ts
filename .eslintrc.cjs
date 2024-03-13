@@ -1,32 +1,53 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true
-  },
+  root: true,
+  env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended'
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended'
   ],
-  overrides: [
-    {
-      env: {
-        node: true
-      },
-      files: ['.eslintrc.{js,cjs}'],
-      parserOptions: {
-        sourceType: 'script'
-      }
-    }
-  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: false
+    }
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['react', 'react-hooks', 'react-refresh', 'import', 'prettier'],
+  settings: {
+    react: { version: 'detect' }
+  },
   rules: {
-    'prettier/prettier': 'warn'
+    'prettier/prettier': 'warn',
+    'no-console': 'error',
+    'no-unused-expressions': 'error',
+    curly: ['error', 'all'],
+    'import/prefer-default-export': 'off',
+    'import/no-default-export': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type'
+        ]
+      }
+    ],
+    'react/display-name': 'off',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': 'error',
+    'react/jsx-uses-react': 'off',
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+    'react-refresh/only-export-components': 'off'
   }
 };

@@ -1,7 +1,7 @@
-import "./App.css";
+import './App.css';
 
-import { RouterProvider } from "react-router-dom";
-import { router } from "./app/router";
+import { RouterProvider } from 'react-router-dom';
+import { router } from './app/router';
 
 export const App = () => {
   return (
@@ -11,4 +11,4 @@ export const App = () => {
   );
 };
 
-export default App;
+// export default App;
