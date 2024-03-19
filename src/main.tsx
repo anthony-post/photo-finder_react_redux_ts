@@ -3,13 +3,15 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
-import { App } from './App';
+import { RouterProvider } from 'react-router-dom';
 import { store } from './app/store';
 import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
+import { router } from './app/router';
 
 const container = document.getElementById('root');
 
@@ -26,7 +28,7 @@ if (container) {
     <React.StrictMode>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <App />
+          <RouterProvider router={router} />
         </Provider>
       </ThemeProvider>
     </React.StrictMode>
