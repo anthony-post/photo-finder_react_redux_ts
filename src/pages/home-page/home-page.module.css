@@ -1,0 +1,22 @@
+.home {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.home-title {
+  text-align: center;
+}
+
+.home-section {
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-column-gap: 10px;
+  align-items: start;
+}
