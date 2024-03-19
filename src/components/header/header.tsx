@@ -1,3 +1,6 @@
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
 import s from './header.module.css';
 
 export const Header = () => {
@@ -5,8 +8,15 @@ export const Header = () => {
     <header className={s.header}>
       <div className={s['header-logo']}>PhotoFinder</div>
       <div className={s['control-search']}>
-        <input placeholder="enter key word" />
-        <button>Search</button>
+        <TextField
+          id="search"
+          label="Enter keywords"
+          variant="filled"
+          fullWidth
+        />
+        <Button variant="contained" size="large" endIcon={<SearchIcon />}>
+          Search
+        </Button>
       </div>
       <div className={s.account}>Guest</div>
     </header>

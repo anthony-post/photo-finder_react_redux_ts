@@ -1,6 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { App } from './App';
 import { store } from './app/store';
 import './index.css';
@@ -11,14 +13,22 @@ import '@fontsource/roboto/700.css';
 
 const container = document.getElementById('root');
 
+const theme = createTheme({
+  palette: {
+    mode: 'dark'
+  }
+});
+
 if (container) {
   const root = createRoot(container);
 
   root.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ThemeProvider>
     </React.StrictMode>
   );
 } else {

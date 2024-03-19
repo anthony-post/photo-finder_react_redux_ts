@@ -1,13 +1,11 @@
 .home {
+  flex: 1 0 auto;
   padding: 10px;
   margin: 0 auto;
 }
 
 .home-title {
   text-align: center;
-}
-
-.home-section {
 }
 
 .list {

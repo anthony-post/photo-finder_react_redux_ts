@@ -1,5 +1,4 @@
 import s from './home-page.module.css';
-// import logo from '../../logo.svg';
 
 const mockPhotoList = [
   {
@@ -34,9 +33,6 @@ export const HomePage = () => {
           ))}
         </ul>
       </section>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header> */}
     </main>
   );
 };

@@ -1,15 +1,25 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   position: sticky;
-  padding: 10px;
+  top: 0;
+  padding: 20px;
+  background-color: #242424;
 }
 
 .header-logo {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .control-search {
+  display: flex;
+  gap: 10px;
+  width: 100%;
 }
 
 .account {
+  font-size: 20px;
 }
