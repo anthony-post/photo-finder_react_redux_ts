@@ -13,12 +13,13 @@
 .header-logo {
   font-size: 30px;
   font-weight: bold;
+  text-decoration: none;
+  color: unset;
+  cursor: pointer;
 }
 
-.control-search {
-  display: flex;
-  gap: 10px;
-  width: 100%;
+.header-logo:hover {
+  color: aqua;
 }
 
 .account {

@@ -39,4 +39,7 @@ export type UnsplashData = {
     location: string;
   };
   tags: [];
+  location: {
+    name: string;
+  };
 };

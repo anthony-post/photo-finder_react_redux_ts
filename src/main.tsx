@@ -4,14 +4,13 @@ import { Provider } from 'react-redux';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import { RouterProvider } from 'react-router-dom';
+import { router } from './app/router';
 import { store } from './app/store';
 import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
-import { router } from './app/router';
 
 const container = document.getElementById('root');
 

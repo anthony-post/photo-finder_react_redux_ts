@@ -1,0 +1,25 @@
+.breadcrumbs {
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.photo-details-wrp {
+  display: flex;
+  gap: 20px;
+}
+
+.photo-details__description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.photo-details__title {
+  font-weight: bold;
+}
+
+.photo-details__text {
+  font-style: italic;
+}
