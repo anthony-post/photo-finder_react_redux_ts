@@ -1,23 +1,14 @@
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
+import { SearchForm } from '../search-form/search-form';
 import s from './header.module.css';
 
 export const Header = () => {
   return (
     <header className={s.header}>
-      <div className={s['header-logo']}>PhotoFinder</div>
-      <div className={s['control-search']}>
-        <TextField
-          id="search"
-          label="Enter keywords"
-          variant="filled"
-          fullWidth
-        />
-        <Button variant="contained" size="large" endIcon={<SearchIcon />}>
-          Search
-        </Button>
-      </div>
+      <Link className={s['header-logo']} to="/">
+        PhotoFinder
+      </Link>
+      <SearchForm />
       <div className={s.account}>Guest</div>
     </header>
   );
