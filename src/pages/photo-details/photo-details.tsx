@@ -1,32 +1,42 @@
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import StarIcon from '@mui/icons-material/Star';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useGetPhotoByIdQuery } from '../../features/unsplash-api/unsplash-api';
 import s from './photo-details.module.css';
 
 export const PhotoDetails = () => {
   const params = useParams<{ photoId: string }>();
+  const navigate = useNavigate();
 
   const { data, isLoading, isUninitialized, isError } = useGetPhotoByIdQuery(
     params.photoId
   );
 
+  const goBack = () => navigate(-1);
+
+  const goFavourites = () => navigate('/favourites');
+
   if (isLoading || isUninitialized) {
-    // TODO component Loader
-    return <p>loading ... please wait</p>;
+    return (
+      <div className={s['loader']}>
+        <CircularProgress color="inherit" disableShrink />
+      </div>
+    );
   }
 
   if (isError) {
     // TODO component ErrorFetch
-    return <p>there is some error</p>;
+    return (
+      <div className={s['loader']}>
+        <p>There is some error. Try again later.</p>
+      </div>
+    );
   }
 
   return (
     <section>
-      <Link className={s.breadcrumbs} to="..">
-        Назад
-      </Link>
+      <Button onClick={goBack}>Назад</Button>
       <article className={s['photo-details-wrp']}>
         <img src={data.url} alt={data.altDescription} />
         <div>
@@ -55,7 +65,12 @@ export const PhotoDetails = () => {
           и нажать ентер, то страница также должна корректно открыться. Тоже
           забывают про это при сдаче, а потом приходится доделывать. Обратите
           внимание. */}
-          <Button variant="contained" size="large" endIcon={<StarIcon />}>
+          <Button
+            variant="contained"
+            size="large"
+            endIcon={<StarIcon />}
+            onClick={goFavourites}
+          >
             Добавить/Удалить Избранное
           </Button>
         </div>

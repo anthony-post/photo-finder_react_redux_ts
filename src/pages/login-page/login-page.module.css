@@ -1,0 +1,19 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+}
+
+.helper-text {
+  padding-top: 10px;
+}
+
+.register-link {
+  text-decoration: none;
+  color: #90caf9;
+}
+
+.register-link:hover {
+  color: #42a5f5;
+}

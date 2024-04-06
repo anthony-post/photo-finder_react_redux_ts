@@ -23,3 +23,9 @@
 .photo-details__text {
   font-style: italic;
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

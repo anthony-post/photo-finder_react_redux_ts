@@ -6,6 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './app/router';
 import { store } from './app/store';
+import './firebase/config';
 import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';

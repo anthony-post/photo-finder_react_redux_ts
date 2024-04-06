@@ -19,9 +19,22 @@
 }
 
 .header-logo:hover {
-  color: aqua;
+  color: #90caf9;
 }
 
-.account {
-  font-size: 20px;
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header-controls__link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-controls__link:hover {
+  color: #90caf9;
 }

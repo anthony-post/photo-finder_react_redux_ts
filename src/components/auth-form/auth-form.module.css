@@ -1,0 +1,17 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-form-wrp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.auth-form-error {
+  height: 20px;
+  color: red;
+}

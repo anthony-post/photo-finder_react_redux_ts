@@ -11,13 +11,14 @@ type FormFields = {
 
 export const SearchForm = () => {
   const navigate = useNavigate();
+  // TODO требуется доработка, так как, если расскоментировать использование useSearchParams, то работает некорректно ???
   // Проверяем есть ли в URL параметр запроса для поиска - если ДА, то подставляем это значение в поле Поиска
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchParamValue = searchParams.get('query');
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const searchParamValue = searchParams.get('query');
   const searchInputValue = (inputValue: string): string => {
-    if (searchParamValue) {
-      return searchParamValue;
-    }
+    // if (searchParamValue) {
+    //   return searchParamValue;
+    // }
     if (inputValue) {
       return inputValue;
     }
@@ -27,7 +28,7 @@ export const SearchForm = () => {
   const { handleSubmit, control } = useForm<FormFields>();
 
   const onSearchFormSubmit: SubmitHandler<FormFields> = data => {
-    setSearchParams({ query: data.TextField });
+    // setSearchParams({ query: data.TextField });
     navigate(`/search?query=${data.TextField}`);
   };
 

@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useGetPhotoListBySearchQuery } from '../../features/unsplash-api/unsplash-api';
 import { ImageListLayout } from '../../components/image-list/image-list-layout';
 import s from './search-page.module.css';
@@ -12,14 +13,22 @@ export const SearchPage = () => {
     useGetPhotoListBySearchQuery(searchValue);
 
   if (isLoading || isUninitialized) {
-    // TODO component Loader
-    return <p>loading ... please wait</p>;
+    return (
+      <div className={s['loader']}>
+        <CircularProgress color="inherit" disableShrink />
+      </div>
+    );
   }
 
   if (isError) {
     // TODO component ErrorFetch
-    return <p>there is some error</p>;
+    return (
+      <div className={s['loader']}>
+        <p>There is some error. Try again later.</p>
+      </div>
+    );
   }
+
   return (
     <section className={s.search}>
       <h1 className={s['search-title']}>
