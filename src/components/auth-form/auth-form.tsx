@@ -85,12 +85,7 @@ export const AuthForm = ({
         {errorForm && <div className={s['auth-form-error']}>{errorForm}</div>}
       </div>
 
-      <Button
-        variant="contained"
-        size="large"
-        // endIcon={<SearchIcon />}
-        type="submit"
-      >
+      <Button variant="contained" size="large" type="submit">
         {isLoading ? <CircularProgress color="inherit" /> : titleBtn}
       </Button>
     </form>

@@ -1,0 +1,13 @@
+.photo-item__wrp {
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-item__img {
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.photo-item__img:hover {
+  transform: scale(1.25);
+}

@@ -1,11 +1,14 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth } from '../../firebase/firebase-config';
 import { AuthForm } from '../../components/auth-form/auth-form';
+import { useAppDispatch } from '../../hooks/redux-hooks';
+import { getUserDbProfile } from '../../app/slices/usersSlice';
 import s from './login-page.module.css';
 
 export const LoginPage = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -26,9 +29,18 @@ export const LoginPage = () => {
       userCredentials.email,
       userCredentials.password
     )
-      // здесь не нужен dispatch, так как используется firebase observer - onAuthStateChanged,
-      // который делает dispatch в случае, если пользователь залогинился
-      .then(() => {
+      // здесь не нужно сетить пользователя через dispatch, так как используется firebase observer - onAuthStateChanged,
+      // который делает сетить пользователя через dispatch в случае, если пользователь залогинился (см. компонент MainLayout)
+      .then(userData => {
+        // получаем профиль пользователя из db Firebase
+        // console.log(userData);
+        dispatch(
+          getUserDbProfile({
+            userId: userData.user.uid,
+            userEmail: userData.user.email
+          })
+        );
+
         navigate(fromPage, { replace: true });
       })
       .catch(error => {

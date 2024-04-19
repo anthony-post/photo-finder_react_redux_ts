@@ -1,6 +1,6 @@
 import { User, onAuthStateChanged } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
-import { auth } from '../../firebase/config';
+import { auth } from '../../firebase/firebase-config';
 
 // TODO удалить
 // НЕ используется, так как проверка на авторизацию реализована через кастомный хук useAuth и Redux

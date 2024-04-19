@@ -2,12 +2,12 @@ import { Outlet } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { setUser } from '../../app/slices/usersSlice';
+import { getUserDbProfile, setUser } from '../../app/slices/usersSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { ContentSection } from '../../components/content-section/content-section';
-import { auth } from '../../firebase/config';
+import { auth } from '../../firebase/firebase-config';
 import s from './main-layout.module.css';
 
 export const MainLayout = () => {
@@ -24,6 +24,13 @@ export const MainLayout = () => {
           setUser({
             id: user.uid,
             email: user.email
+          })
+        );
+        // set favourites to store
+        dispatch(
+          getUserDbProfile({
+            userId: user.uid,
+            userEmail: user.email
           })
         );
       } else {

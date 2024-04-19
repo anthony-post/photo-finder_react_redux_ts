@@ -1,11 +1,15 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth } from '../../firebase/firebase-config';
 import { AuthForm } from '../../components/auth-form/auth-form';
+import { useAppDispatch } from '../../hooks/redux-hooks';
+import { createUserDbProfile } from '../../app/slices/usersSlice';
 import s from './register-page.module.css';
 
 export const RegisterPage = () => {
+  const dispatch = useAppDispatch();
+
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -25,9 +29,18 @@ export const RegisterPage = () => {
       userCredentials.email,
       userCredentials.password
     )
-      // здесь не нужен dispatch, так как используется firebase observer - onAuthStateChanged,
-      // который делает dispatch в случае, если пользователь зарегистрировался
-      .then(() => {
+      // здесь не нужно сетить пользователя через dispatch, так как используется firebase observer - onAuthStateChanged,
+      // который делает сетить пользователя через dispatch в случае, если пользователь зарегистрировался (см. компонент MainLayout)
+      .then(userData => {
+        // создаем профиль пользователя в Firebase
+        // console.log(userData);
+        dispatch(
+          createUserDbProfile({
+            userId: userData.user.uid,
+            userEmail: userData.user.email
+          })
+        );
+
         navigate(fromPage, { replace: true });
       })
       .catch(error => {

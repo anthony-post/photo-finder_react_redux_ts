@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth } from '../../firebase/firebase-config';
 import { SearchForm } from '../search-form/search-form';
 import { useAuth } from '../../hooks/auth-hook';
 import s from './header.module.css';
@@ -8,7 +8,7 @@ import s from './header.module.css';
 export const Header = () => {
   const location = useLocation();
 
-  const { isAuth, email } = useAuth();
+  const { isAuth, userEmail } = useAuth();
 
   const handleLogOut = () => {
     // sign out from firebase
@@ -24,7 +24,10 @@ export const Header = () => {
       <div className={s['header-controls']}>
         {isAuth ? (
           <>
-            <div>{email}</div>
+            <div>{userEmail}</div>
+            <Link to={'/favourites'} className={s['header-controls__link']}>
+              Favourites
+            </Link>
             <div className={s['header-controls__link']} onClick={handleLogOut}>
               Logout
             </div>

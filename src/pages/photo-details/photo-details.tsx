@@ -1,13 +1,25 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useGetPhotoByIdQuery } from '../../features/unsplash-api/unsplash-api';
+import { useAuth } from '../../hooks/auth-hook';
+import {
+  addFavourites,
+  getUserDbProfile,
+  removeFavourites
+} from '../../app/slices/usersSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import s from './photo-details.module.css';
 
 export const PhotoDetails = () => {
+  const location = useLocation();
   const params = useParams<{ photoId: string }>();
   const navigate = useNavigate();
+  const { isAuth, userId, userEmail } = useAuth();
+  const dispatch = useAppDispatch();
+  const favourites = useAppSelector(state => state.users.favourites);
 
   const { data, isLoading, isUninitialized, isError } = useGetPhotoByIdQuery(
     params.photoId
@@ -15,7 +27,43 @@ export const PhotoDetails = () => {
 
   const goBack = () => navigate(-1);
 
-  const goFavourites = () => navigate('/favourites');
+  const isFavourite = () => {
+    if (data) {
+      return favourites.includes(data.id);
+    }
+  };
+
+  const updateFavourites = async (dataEmail: string | null | undefined) => {
+    if (isAuth) {
+      if (isFavourite()) {
+        await dispatch(
+          removeFavourites({ userEmail: dataEmail, photoId: data?.id })
+        );
+      } else {
+        await dispatch(
+          addFavourites({
+            userEmail: dataEmail,
+            photoId: data?.id
+          })
+        );
+      }
+      // синхронизирует firebase и store
+      dispatch(
+        getUserDbProfile({
+          userId: userId,
+          userEmail: dataEmail
+        })
+      );
+    } else {
+      navigate('/login', {
+        state: {
+          from: {
+            pathname: location.pathname
+          }
+        }
+      });
+    }
+  };
 
   if (isLoading || isUninitialized) {
     return (
@@ -68,10 +116,10 @@ export const PhotoDetails = () => {
           <Button
             variant="contained"
             size="large"
-            endIcon={<StarIcon />}
-            onClick={goFavourites}
+            endIcon={isFavourite() ? <StarIcon /> : <StarBorderIcon />}
+            onClick={() => updateFavourites(userEmail)}
           >
-            Добавить/Удалить Избранное
+            Добавить/Удалить
           </Button>
         </div>
       </article>
