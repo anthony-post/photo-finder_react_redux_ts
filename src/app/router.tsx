@@ -6,6 +6,7 @@ import { SearchPage } from '../pages/search-page/search-page';
 import { LoginPage } from '../pages/login-page/login-page';
 import { RegisterPage } from '../pages/register-page/register-page';
 import { Favourites } from '../pages/favourites-page/favourites-page';
+import { History } from '../pages/history-page/history-page';
 import { PrivateRoute } from '../hoc/private-route';
 
 export const router = createBrowserRouter([
@@ -42,6 +43,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Favourites />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: 'history',
+        element: (
+          <PrivateRoute>
+            <History />
           </PrivateRoute>
         )
       }

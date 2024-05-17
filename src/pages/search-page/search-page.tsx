@@ -32,7 +32,7 @@ export const SearchPage = () => {
   return (
     <section className={s.search}>
       <h1 className={s['search-title']}>
-        Search Page - Photo by search {searchValue}
+        Search Page - Photo by search &apos;{searchValue}&apos;
       </h1>
       <ImageListLayout data={data} />
     </section>

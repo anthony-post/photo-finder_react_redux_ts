@@ -1,0 +1,21 @@
+/* .history {
+  position: absolute;
+  top: 60px;
+  background-color: black;
+  z-index: 100;
+  width: 60%;
+} */
+
+.history-title {
+  text-align: center;
+}
+
+.history-link {
+  cursor: pointer;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

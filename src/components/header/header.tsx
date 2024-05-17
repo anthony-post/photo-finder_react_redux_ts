@@ -28,6 +28,9 @@ export const Header = () => {
             <Link to={'/favourites'} className={s['header-controls__link']}>
               Favourites
             </Link>
+            <Link to={'/history'} className={s['header-controls__link']}>
+              History
+            </Link>
             <div className={s['header-controls__link']} onClick={handleLogOut}>
               Logout
             </div>

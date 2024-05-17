@@ -19,7 +19,7 @@ export const PhotoDetails = () => {
   const navigate = useNavigate();
   const { isAuth, userId, userEmail } = useAuth();
   const dispatch = useAppDispatch();
-  const favourites = useAppSelector(state => state.users.favourites);
+  const favourites = useAppSelector(state => state.users.favourites.data);
 
   const { data, isLoading, isUninitialized, isError } = useGetPhotoByIdQuery(
     params.photoId
