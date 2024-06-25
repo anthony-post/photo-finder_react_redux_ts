@@ -103,8 +103,11 @@ export const usersSlice = createSlice({
       .addCase(getUserDbProfile.fulfilled, (state, action) => {
         if (action.payload) {
           console.log('getUserDbProfile is fullfield');
+          console.log(action.payload);
           // TODO типизация
+          // @ts-ignore: error message
           state.favourites.data = action.payload.favourites;
+          // @ts-ignore: error message
           state.history.data = action.payload.history;
         }
         state.userDbProfileLoadingStatus.isLoading = false;
