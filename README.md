@@ -1,5 +1,14 @@
 # Photo finder application (React/TS/Redux/Firebase/MaterialUI/Vite)
 
+The Photo Finder helps to find a variaty of pictures by searching request.
+
+## Features
+
+- Registration/Authorization
+- Search photo by any word
+- Adding Favourites photo for authorized users
+- Search History for authorized users
+
 # vite-template-redux
 
 Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
