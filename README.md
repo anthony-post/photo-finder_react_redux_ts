@@ -2,6 +2,8 @@
 
 The Photo Finder helps to explore a variaty of pictures by searching request.
 
+[Check the App](https://photo-finder-react-redux-ts.vercel.app/)
+
 ## Features
 
 - Registration/Authorization
@@ -23,30 +25,16 @@ The Photo Finder helps to explore a variaty of pictures by searching request.
 ![MaterialUI](https://img.shields.io/badge/material_ui-0d6efd?style=for-the-badge&logo=materialui&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-# vite-template-redux
+## How to run locally
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+- install dependencies
 
 ```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
+npm install
 ```
 
-## Goals
+- start local server via Vite
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
-
-## Scripts
-
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
-
-## Inspiration
-
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+```sh
+npm run dev
+```
