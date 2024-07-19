@@ -4,6 +4,8 @@ The Photo Finder helps to explore a variaty of pictures by searching request.
 
 [Check the App](https://photo-finder-react-redux-ts.vercel.app/)
 
+![Screenshot](image.png)
+
 ## Features
 
 - Registration/Authorization
